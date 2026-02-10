@@ -18,6 +18,25 @@ import sys
 from pathlib import Path
 
 
+# Constants
+LABEL_COLOR = 'D4C5F9'  # Light purple for all backlog task labels
+
+
+def get_label_from_category(category):
+    """Convert category to a GitHub label
+    
+    Args:
+        category: Category name (e.g., "🏗️ Core Systems")
+        
+    Returns:
+        Label string (e.g., "core-systems")
+    """
+    # Remove emoji and special characters, convert to lowercase kebab-case
+    label = re.sub(r'[^\w\s-]', '', category).strip()
+    label = label.lower().replace(' ', '-')
+    return label
+
+
 class BacklogParser:
     """Parse the backlog.md file and extract tasks"""
     
@@ -48,23 +67,29 @@ class BacklogParser:
             if not in_todo_section:
                 continue
             
-            # Check for category headers
-            category_match = re.match(r'####\s+\*\*(.+?)\*\*\s+\(Est:\s+(.+?)\)', line)
+            # Check for category headers like: #### **🏗️ Core Systems** (Est: 16-20 hours)
+            category_match = re.match(
+                r'####\s+\*\*(?P<name>.+?)\*\*\s+\(Est:\s+(?P<estimate>.+?)\)',
+                line
+            )
             if category_match:
-                self.current_category = category_match.group(1)
-                self.category_estimate = category_match.group(2)
+                self.current_category = category_match.group('name')
+                self.category_estimate = category_match.group('estimate')
                 continue
             
-            # Check for task items (checkboxes)
-            task_match = re.match(r'- \[ \]\s+\*\*(.+?)\*\*\s+\((\d+)\s+hrs?\)', line)
+            # Check for task items like: - [ ] **Setup Godot Project Structure** (2 hrs)
+            task_match = re.match(
+                r'- \[ \]\s+\*\*(?P<title>.+?)\*\*\s+\((?P<hours>\d+)\s+hrs?\)',
+                line
+            )
             if task_match:
                 # Save previous task if exists
                 if current_task:
                     self.tasks.append(current_task)
                 
                 # Start new task
-                task_title = task_match.group(1)
-                task_hours = task_match.group(2)
+                task_title = task_match.group('title')
+                task_hours = task_match.group('hours')
                 current_task = {
                     'title': task_title,
                     'hours': task_hours,
@@ -86,13 +111,6 @@ class BacklogParser:
             self.tasks.append(current_task)
         
         return self.tasks
-    
-    def get_label_for_category(self, category):
-        """Convert category to a GitHub label"""
-        # Remove emoji and clean up
-        label = re.sub(r'[^\w\s-]', '', category).strip()
-        label = label.lower().replace(' ', '-')
-        return label
 
 
 class IssueCreator:
@@ -126,8 +144,8 @@ class IssueCreator:
         
         body = "\n".join(body_parts)
         
-        # Get label from category
-        label = self.get_label_from_category(task['category'])
+        # Get label from category using shared utility function
+        label = get_label_from_category(task['category'])
         
         if self.dry_run:
             print(f"\n{'='*80}")
@@ -185,18 +203,11 @@ class IssueCreator:
         except subprocess.CalledProcessError as e:
             print(f"  ✗ Failed to add to project: {e.stderr}")
     
-    def get_label_from_category(self, category):
-        """Convert category to a GitHub label"""
-        # Remove emoji and clean up
-        label = re.sub(r'[^\w\s-]', '', category).strip()
-        label = label.lower().replace(' ', '-')
-        return label
-    
     def ensure_labels_exist(self, tasks):
         """Ensure all required labels exist in the repository"""
         labels_needed = set()
         for task in tasks:
-            label = self.get_label_from_category(task['category'])
+            label = get_label_from_category(task['category'])
             labels_needed.add(label)
         
         print(f"\nEnsuring labels exist: {', '.join(labels_needed)}")
@@ -208,7 +219,7 @@ class IssueCreator:
                     cmd = [
                         'gh', 'label', 'create', label,
                         '--repo', self.repo,
-                        '--color', 'D4C5F9',  # Light purple
+                        '--color', LABEL_COLOR,  # Use named constant
                         '--force'  # Update if exists
                     ]
                     subprocess.run(cmd, capture_output=True, text=True)
