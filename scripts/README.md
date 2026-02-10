@@ -57,7 +57,9 @@ To create issues and add them to a GitHub Project board:
 python scripts/create_backlog_issues.py --project "Exo Holdout"
 ```
 
-**Note:** Replace "Exo Holdout" with the exact name of your GitHub Project.
+**Note:** 
+- Replace "Exo Holdout" with the exact name of your GitHub Project.
+- Issues will be added to the project, but the specific column placement depends on your project's configuration and automation rules.
 
 #### Advanced Options
 
@@ -84,7 +86,7 @@ Available options:
    - Title from the task name
    - Body containing category, time estimate, and subtasks as a checklist
    - Label based on the category
-5. **Optionally adds** issues to a GitHub Project board in the backlog column
+5. **Optionally adds** issues to a GitHub Project board (column placement depends on project automation rules)
 
 ### Example Output
 

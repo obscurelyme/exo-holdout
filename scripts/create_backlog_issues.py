@@ -60,8 +60,8 @@ class BacklogParser:
                 in_todo_section = True
                 continue
             
-            # Stop at next major section (but not #### which are categories)
-            if in_todo_section and line.startswith('##') and not line.startswith('####'):
+            # Stop at next major section (## with space, not #### which are categories)
+            if in_todo_section and re.match(r'^##\s', line):
                 break
             
             if not in_todo_section:
@@ -215,16 +215,21 @@ class IssueCreator:
         for label in labels_needed:
             if not self.dry_run:
                 try:
-                    # Try to create the label (will fail if it already exists, which is fine)
+                    # Try to create the label (will update if it already exists)
                     cmd = [
                         'gh', 'label', 'create', label,
                         '--repo', self.repo,
                         '--color', LABEL_COLOR,  # Use named constant
                         '--force'  # Update if exists
                     ]
-                    subprocess.run(cmd, capture_output=True, text=True)
-                except subprocess.CalledProcessError:
-                    pass  # Label might already exist
+                    result = subprocess.run(cmd, capture_output=True, text=True)
+                    if result.returncode == 0:
+                        if 'already exists' in result.stderr.lower():
+                            print(f"  ✓ Label '{label}' already exists")
+                        else:
+                            print(f"  ✓ Created label '{label}'")
+                except subprocess.CalledProcessError as e:
+                    print(f"  ⚠️  Warning: Could not create label '{label}': {e.stderr}")
 
 
 def main():
