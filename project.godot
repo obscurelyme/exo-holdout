@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="Exo Holdout"
+run/main_scene="uid://diteh17gvgbhj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://scenes/": "orange",
+"res://scripts/": "teal"
+}
 
 [physics]
 
@@ -21,4 +29,4 @@ config/icon="res://icon.svg"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="forward_plus"
+anti_aliasing/quality/msaa_2d=1

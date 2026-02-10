@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bqbxl4nu8lyem"]
+
+[ext_resource type="Script" uid="uid://btinty27wt4hw" path="res://scripts/player.gd" id="1_3vyb7"]
+
+[node name="Player" type="Node2D" unique_id=828230134]
+position = Vector2(278, 326)
+script = ExtResource("1_3vyb7")
