@@ -77,7 +77,8 @@ class BacklogParser:
             # Check for subtask items (indented with bullets)
             if current_task and line.strip().startswith('-'):
                 subtask = line.strip()[1:].strip()
-                if subtask:
+                # Skip separator lines and empty items
+                if subtask and subtask != '--' and not subtask.startswith('--'):
                     current_task['subtasks'].append(subtask)
         
         # Add the last task
