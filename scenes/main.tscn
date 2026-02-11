@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cd0r4rpobid2b" path="res://scripts/ui/menus/main/create_lobby_btn.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://2jdf2rw70ph5" path="res://scripts/ui/menus/main/join_lobby_btn.gd" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://dh3lwpirje2rk" path="res://scripts/ui/menus/main/credits_btn.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bkb7jchyv1avf" path="res://scripts/ui/menus/main/quit_btn.gd" id="3_tbgi4"]
 
 [node name="Main" type="Control" unique_id=1480836811]
@@ -43,6 +44,11 @@ script = ExtResource("1_sugp2")
 layout_mode = 2
 text = "Join Lobby"
 script = ExtResource("2_jyhfs")
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2102113855]
+layout_mode = 2
+text = "Credits"
+script = ExtResource("3_jyhfs")
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=119561589]
 layout_mode = 2
