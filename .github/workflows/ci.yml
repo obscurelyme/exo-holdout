@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_PATH: skg.space-defender
-  EXPORT_NAME: Space Defender
+  PROJECT_PATH: exo-holdout
+  EXPORT_NAME: Exo Holdout
   GODOT_VERSION: 4.6
 
 permissions:
@@ -40,7 +40,7 @@ jobs:
     needs: login-to-amazon-ecr
     runs-on: ubuntu-latest
     container:
-      image: ${{ needs.login-to-amazon-ecr.outputs.registry }}/skg/godot:4.6
+      image: ${{ needs.login-to-amazon-ecr.outputs.registry }}/skg/godot:4.6-stable
       credentials:
         username: ${{ needs.login-to-amazon-ecr.outputs.docker_username }}
         password: ${{ needs.login-to-amazon-ecr.outputs.docker_password }}
