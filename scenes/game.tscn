@@ -2,8 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://clpju2lfbo1ro" path="res://new_tile_set.tres" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bqbxl4nu8lyem" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://hl0kv5bas0oj" path="res://scripts/ui/menus/game/quit_game.gd" id="3_lnu2h"]
 
-[node name="Game" type="Node2D" unique_id=1773158761]
+[node name="Game" type="Node" unique_id=1831768865]
 
 [node name="Tiles" type="Node2D" parent="." unique_id=693132005]
 
@@ -16,3 +17,30 @@ tile_map_data = PackedByteArray("AAABAP3/BgAIAAkAAAABAP7/BgAIAAoAAAABAP//BgAIAAs
 tile_set = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." unique_id=1447230057 instance=ExtResource("2_yqjtg")]
+
+[node name="Control" type="Control" parent="." unique_id=11942903]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1916710831]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Button" type="Button" parent="Control/MarginContainer" unique_id=1171570953]
+layout_mode = 2
+text = "Quit Game"
+script = ExtResource("3_lnu2h")
