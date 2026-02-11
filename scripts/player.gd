@@ -10,15 +10,17 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	# Movement
-	_movement_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = _movement_dir * speed
 
 	# Fire
 	if Input.is_action_pressed("fire"):
-		print("Fire gun")
+		# TODO(mackenzie): implement fire logic here
+		pass
 
 func _physics_process(_delta: float) -> void:
+	# Movement
+	_movement_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
 	# Rotation
 	look_at(get_global_mouse_position())
 	move_and_slide()
