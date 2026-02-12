@@ -18,6 +18,17 @@ tile_set = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." unique_id=1447230057 instance=ExtResource("2_yqjtg")]
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1180052441]
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
+
 [node name="Control" type="Control" parent="." unique_id=11942903]
 layout_mode = 3
 anchors_preset = 15
