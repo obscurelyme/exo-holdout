@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://2fpdabufhqlw" path="res://scripts/ui/buttons/change_scene_btn.gd" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://c88q32emqtt70" path="res://scripts/camera/mini_map_cam.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://btar8wvwc07vk" path="res://scripts/spawn_system/spawn_points.gd" id="5_iywne"]
+[ext_resource type="Script" uid="uid://cxxnllce54do6" path="res://scripts/enemy/enemy_manager.gd" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://c3su8tbke46e4" path="res://scenes/enemies/grunt.tscn" id="7_u5sy4"]
 
 [node name="Game" type="Node" unique_id=1831768865]
 
@@ -104,3 +106,13 @@ position = Vector2(15, 1877)
 
 [node name="Marker2D8" type="Marker2D" parent="EnemySpawnPoints" unique_id=520703378]
 position = Vector2(8, -1816)
+
+[node name="EnemyManager" type="Node" parent="." unique_id=2338914 node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("6_p57ef")
+grunt_enemy = ExtResource("7_u5sy4")
+spawn_points = NodePath("../EnemySpawnPoints")
+
+[node name="Timer" type="Timer" parent="EnemyManager" unique_id=1643051256]
+wait_time = 3.0
+autostart = true
+ignore_time_scale = true
