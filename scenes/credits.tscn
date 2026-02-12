@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkbxc4qauiix1"]
 
-[ext_resource type="Script" uid="uid://by2pl5m18ykw8" path="res://scripts/ui/menus/credits/go_back_btn.gd" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://2fpdabufhqlw" path="res://scripts/ui/buttons/change_scene_btn.gd" id="1_2ckv8"]
+[ext_resource type="PackedScene" uid="uid://diteh17gvgbhj" path="res://scenes/main.tscn" id="2_0ctdu"]
 
 [node name="Credits" type="Control" unique_id=89264322]
 layout_mode = 3
@@ -54,4 +55,4 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Go Back"
-script = ExtResource("1_0bpdh")
+script = ExtResource("1_2ckv8")
