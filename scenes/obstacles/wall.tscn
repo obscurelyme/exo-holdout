@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://dj53chtpbecxs"]
 
-[node name="Wall" type="Node2D" unique_id=1716522658]
+[ext_resource type="Texture2D" uid="uid://bjacm35fw2oxn" path="res://resources/sprites/wall.png" id="1_fdlmw"]
+
+[node name="Wall" type="Sprite2D" unique_id=1473166400]
 scale = Vector2(10, 10)
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1404879752]
-radius = 4.34
-carve_navigation_mesh = true
-avoidance_layers = 2
-
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1585054437]
-polygon = PackedVector2Array(-2, -1, -2, 1, -1, 2, 1, 2, 2, 1, 2, -1, 1, -2, -1, -2)
+texture = ExtResource("1_fdlmw")
