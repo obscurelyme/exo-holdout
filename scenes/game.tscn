@@ -14,6 +14,9 @@ vertices = PackedVector2Array(-2334.1797, 1949.1094, -2408.7969, -1962.0313, -19
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 5), PackedInt32Array(4, 5, 8, 9), PackedInt32Array(10, 11, 4, 12), PackedInt32Array(12, 4, 9, 13)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(2360, 2016, -2344, 1959, -2419, -1972, 2391, -1987)])
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gee14"]
+radius = 131.01526
+
 [node name="Game" type="Node" unique_id=1831768865]
 
 [node name="Tiles" type="Node2D" parent="." unique_id=693132005]
@@ -46,6 +49,7 @@ polygon = PackedVector2Array(2124, -2005, 2123, -1573, 1392, -1573, 1392, -962, 
 unique_name_in_owner = true
 
 [node name="Player" parent="." unique_id=1447230057 instance=ExtResource("2_yqjtg")]
+position = Vector2(-280, 48)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1180052441]
 position_smoothing_speed = 10.0
@@ -153,3 +157,27 @@ position = Vector2(-1887, -92.99999)
 
 [node name="Wall3" parent="Obstacles" unique_id=145204414 instance=ExtResource("8_gee14")]
 position = Vector2(-1609, 38.000008)
+
+[node name="HQ" type="Node" parent="." unique_id=1024660256]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="HQ" unique_id=1741798940]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HQ/CharacterBody2D" unique_id=444864619]
+shape = SubResource("CircleShape2D_gee14")
+
+[node name="ColorRect" type="ColorRect" parent="HQ/CharacterBody2D" unique_id=1079954486]
+offset_left = -58.0
+offset_top = -55.0
+offset_right = 59.0
+offset_bottom = 57.0
+
+[node name="Label" type="Label" parent="HQ/CharacterBody2D/ColorRect" unique_id=386570855]
+z_index = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 112.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Headquarters"
