@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://c3su8tbke46e4"]
 
 [ext_resource type="Texture2D" uid="uid://njyxxp14n0u1" path="res://icon.svg" id="1_a6gui"]
+[ext_resource type="Script" uid="uid://chhee4owp263o" path="res://scripts/enemy/grunt.gd" id="1_ave5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxy5n"]
+size = Vector2(50, 50)
 
 [node name="Grunt" type="CharacterBody2D" unique_id=1660435043]
+collision_layer = 2
+script = ExtResource("1_ave5w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2137500275]
 shape = SubResource("RectangleShape2D_uxy5n")
@@ -12,3 +16,8 @@ shape = SubResource("RectangleShape2D_uxy5n")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=97604299]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_a6gui")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1248228667]
+avoidance_enabled = true
+radius = 15.0
+avoidance_mask = 2
