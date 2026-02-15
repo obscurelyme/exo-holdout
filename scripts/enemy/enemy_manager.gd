@@ -11,12 +11,12 @@ var _parent: Node
 
 
 func _ready() -> void:
-    _timer.timeout.connect(_on_timeout)
-    _parent = get_parent()
+	_timer.timeout.connect(_on_timeout)
+	_parent = get_parent()
 
 
 func _on_timeout() -> void:
-    var new_enemy: GruntEnemy = grunt_enemy.instantiate()
-    new_enemy.position = spawn_points.get_spawn_point().position
-    new_enemy.nav_goal = nav_goal
-    _parent.add_child(new_enemy)
+	var new_enemy: GruntEnemy = grunt_enemy.instantiate()
+	new_enemy.position = spawn_points.get_spawn_point().position
+	new_enemy.nav_goal = nav_goal
+	_parent.add_child(new_enemy)

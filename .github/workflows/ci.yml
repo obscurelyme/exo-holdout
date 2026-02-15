@@ -52,3 +52,5 @@ jobs:
       - name: Lint GDScripts
         run: |
           gdlint scripts/.
+          gdformat --check scripts/.
+          find scripts -name "*.gd" -exec gdparse {} +

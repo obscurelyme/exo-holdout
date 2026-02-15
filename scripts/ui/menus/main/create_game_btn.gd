@@ -3,5 +3,5 @@ extends ChangeSceneBtn
 
 
 func _ready() -> void:
-    NetworkManager.host_game()
-    super._ready()
+	NetworkManager.host_game()
+	super._ready()
