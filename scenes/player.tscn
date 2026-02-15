@@ -9,6 +9,17 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 43.046486
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qlg0r"]
+properties/0/path = NodePath(".:speed")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" unique_id=1447230057]
 collision_mask = 2
 script = ExtResource("1_3vyb7")
@@ -35,3 +46,15 @@ wait_time = 0.25
 script = ExtResource("5_qlg0r")
 max_health = 500.0
 metadata/_custom_type_script = "uid://nks7tqkcn7bn"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=865794400]
+enabled = false
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1720582184]
+replication_config = SubResource("SceneReplicationConfig_qlg0r")

@@ -86,6 +86,17 @@ func disconnect_from_multiplayer() -> void:
 	return
 
 
+@rpc("any_peer", "call_local", "reliable")
+func player_loaded() -> void:
+	if multiplayer.is_server():
+		players_loaded += 1
+		if players_loaded == players.size():
+			print("All players ready, starting game")
+			# Start the game
+			get_tree().current_scene.start_game()
+			players_loaded = 0
+
+
 @rpc("any_peer", "reliable")
 func _register_player(player_data: Dictionary):
 	var new_player_id = multiplayer.get_remote_sender_id()

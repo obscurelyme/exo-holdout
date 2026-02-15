@@ -9,6 +9,9 @@ var nav_goal: Marker2D
 
 
 func _ready() -> void:
+	if not multiplayer.is_server():
+		return
+
 	if not nav_goal:
 		push_warning(
 			"No navigation goal found {node}:{id} will not move.".format(
