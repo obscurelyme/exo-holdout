@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfnaetkogcev0"]
+
+[node name="PlayerName" type="Label" unique_id=1853576026]
+offset_right = 102.0
+offset_bottom = 22.333334
+text = "Player_Name"

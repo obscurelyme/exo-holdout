@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Scenes="*uid://bj0n0fkclcolm"
+NetworkManager="*uid://cjp34tmq85hry"
 
 [display]
 
