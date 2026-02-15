@@ -8,6 +8,7 @@ func _process(_delta: float) -> void:
 		return
 
 	var t = ""
+	t += "Whoami: %s\n" % NetworkManager.player_info.name
 	t += "Peer ID: %s\n" % multiplayer.get_unique_id()
 	t += "Is Server: %s\n" % multiplayer.is_server()
 	t += "Connected Peers: %s\n" % str(multiplayer.get_peers())

@@ -21,7 +21,7 @@ func set_player_name(net_player_name: String) -> void:
 
 
 ## Creates a new multiplayer server
-func create_game() -> void:
+func host_game() -> void:
 	if not is_multiplayer_connected():
 		var peer = ENetMultiplayerPeer.new()
 		peer.set_bind_ip(SERVER_IP)
@@ -62,12 +62,14 @@ func _ready() -> void:
 func is_multiplayer_connected() -> bool:
 	return (
 		multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED
+		&& multiplayer.multiplayer_peer is ENetMultiplayerPeer
 	)
 
 
 func disconnect_from_multiplayer():
 	multiplayer.multiplayer_peer.close()
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	print("Disconnected from multiplayer")
 	for player in players:
 		player_disconnected.emit(player)
 	players.clear()
@@ -105,7 +107,6 @@ func _on_connected_fail():
 
 
 func _on_server_disconnected():
-	print("Client disconnected from server")
+	push_warning("Connection to host was lost")
 	disconnect_from_multiplayer()
-	players.clear()
 	server_disconnected.emit()

@@ -1,4 +1,4 @@
-class_name CreateGameBtn
+class_name DisconnectBtn
 extends ChangeSceneBtn
 
 
@@ -7,5 +7,5 @@ func _ready() -> void:
 
 
 func _handle_pressed() -> void:
-	NetworkManager.host_game()
+	NetworkManager.disconnect_from_multiplayer()
 	super._handle_pressed()

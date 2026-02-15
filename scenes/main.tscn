@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://diteh17gvgbhj"]
 
 [ext_resource type="Script" uid="uid://2fpdabufhqlw" path="res://scripts/ui/buttons/change_scene_btn.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://fyoex7hys7kl" path="res://scripts/ui/menus/main/create_game_btn.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bkb7jchyv1avf" path="res://scripts/ui/menus/main/quit_btn.gd" id="3_tbgi4"]
 
 [node name="Main" type="Control" unique_id=1480836811]
@@ -36,7 +37,7 @@ alignment = 1
 [node name="CreateLobby" type="Button" parent="MarginContainer/VBoxContainer" unique_id=127931012]
 layout_mode = 2
 text = "Host Game"
-script = ExtResource("1_jyhfs")
+script = ExtResource("1_sugp2")
 scene = 1
 
 [node name="JoinLobby" type="Button" parent="MarginContainer/VBoxContainer" unique_id=164982080]

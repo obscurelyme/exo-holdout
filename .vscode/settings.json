@@ -1,13 +1,13 @@
 {
-    "editor.formatOnSave": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/*.uid": true
-    },
-    "files.readonlyInclude": {
-        "{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
+	"editor.formatOnSave": true,
+	"files.exclude": {
+		"**/.git": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/*.uid": true
+	},
+	"files.readonlyInclude": {
+		"{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
 	},
 	"[gdscript]": {
 		"editor.defaultFormatter": "EddieDover.gdscript-formatter-linter"
