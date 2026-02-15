@@ -15,5 +15,6 @@ var hit_points: float:
 
 var _health: float
 
+
 func _ready() -> void:
 	hit_points = max_health

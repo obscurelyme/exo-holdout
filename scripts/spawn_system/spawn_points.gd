@@ -3,6 +3,7 @@ extends Node2D
 
 var _spawn_points: Array[Marker2D]
 
+
 func _ready() -> void:
 	# TODO(mackenzie): move the randomize() seed to an autoload script,
 	# I don't want to have to call this
@@ -14,6 +15,7 @@ func _ready() -> void:
 			_spawn_points.append(child_node)
 
 	print_debug("Spawn points: %d" % _spawn_points.size())
+
 
 ## Returns a random, known, spawn point
 func get_spawn_point() -> Marker2D:

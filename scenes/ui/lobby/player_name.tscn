@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dfnaetkogcev0"]
 
+[ext_resource type="Script" uid="uid://cf8pfy6dnc03d" path="res://scripts/ui/menus/lobby/net_player_label.gd" id="1_62qsv"]
+
 [node name="PlayerName" type="Label" unique_id=1853576026]
 offset_right = 102.0
 offset_bottom = 22.333334
 text = "Player_Name"
+script = ExtResource("1_62qsv")

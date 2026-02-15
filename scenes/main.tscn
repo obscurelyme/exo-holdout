@@ -35,13 +35,13 @@ alignment = 1
 
 [node name="CreateLobby" type="Button" parent="MarginContainer/VBoxContainer" unique_id=127931012]
 layout_mode = 2
-text = "Create Lobby"
+text = "Host Game"
 script = ExtResource("1_jyhfs")
 scene = 1
 
 [node name="JoinLobby" type="Button" parent="MarginContainer/VBoxContainer" unique_id=164982080]
 layout_mode = 2
-text = "Join Lobby"
+text = "Join Game"
 script = ExtResource("1_jyhfs")
 scene = 1
 

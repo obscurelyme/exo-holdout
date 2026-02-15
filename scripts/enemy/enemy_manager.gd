@@ -9,9 +9,11 @@ var _parent: Node
 
 @onready var _timer: Timer = $Timer
 
+
 func _ready() -> void:
 	_timer.timeout.connect(_on_timeout)
 	_parent = get_parent()
+
 
 func _on_timeout() -> void:
 	var new_enemy: GruntEnemy = grunt_enemy.instantiate()

@@ -6,8 +6,10 @@ extends Node2D
 var _locked: bool = false
 @onready var _timer: Timer = $Timer
 
+
 func _ready() -> void:
 	_timer.timeout.connect(_on_timeout)
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("fire") and not _locked:
@@ -17,6 +19,7 @@ func _process(_delta: float) -> void:
 		get_tree().root.get_node("Game").add_child(new_projectile)
 		_locked = true
 		_timer.start()
+
 
 func _on_timeout() -> void:
 	_locked = false

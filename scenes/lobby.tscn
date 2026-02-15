@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://depw51e76qtmd" path="res://scripts/ui/menus/lobby/play_game_passthr.gd" id="1_o1atq"]
 [ext_resource type="Script" uid="uid://dqo11bddvmw7j" path="res://scripts/ui/menus/lobby/player_connected.gd" id="2_5gu6x"]
 [ext_resource type="PackedScene" uid="uid://dfnaetkogcev0" path="res://scenes/ui/lobby/player_name.tscn" id="3_q60fs"]
+[ext_resource type="Script" uid="uid://dvp1eixlhb2jj" path="res://scripts/network/debug/net_debug.gd" id="4_nqcc7"]
 
 [node name="Lobby" type="Control" unique_id=2022957192 node_paths=PackedStringArray("create_game_btn", "join_game_btn", "leave_game_btn", "list", "player_name")]
 layout_mode = 3
@@ -53,3 +54,11 @@ layout_mode = 0
 offset_right = 300.0
 offset_bottom = 49.0
 placeholder_text = "Enter your name..."
+
+[node name="Label" type="Label" parent="." unique_id=517124291]
+layout_mode = 0
+offset_left = 1147.0
+offset_top = 178.0
+offset_right = 1586.0
+offset_bottom = 330.0
+script = ExtResource("4_nqcc7")
