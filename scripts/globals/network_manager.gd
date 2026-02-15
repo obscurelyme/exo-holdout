@@ -1,7 +1,7 @@
 extends Node
 
 signal player_connected(net_player: NetPlayer)
-signal player_disconnected(net_player: NetPlayer)
+signal player_disconnected(peer_id: int)
 signal server_disconnected
 
 ## TODO: requires port forwarding if you want to expose this and play with friends.
@@ -9,6 +9,8 @@ signal server_disconnected
 const SERVER_IP: String = "192.168.1.167"
 const PORT = 5290
 const MAX_CONNS: int = 4
+const HOST_PEER_ID: int = 1  # Host peer id is always 1
+const TIMEOUT: int = 30000  # 30 second timeout
 
 var players_loaded = 0
 var player_info: NetPlayer = NetPlayer.new()
@@ -27,9 +29,10 @@ func host_game() -> void:
 		peer.set_bind_ip(SERVER_IP)
 		var error = peer.create_server(PORT, MAX_CONNS)
 		if error:
-			push_error("Unable to create multipler server: %d" % error)
+			push_error("Unable to create multiplayer server: %d" % _error_to_string(error))
 			return
 		multiplayer.multiplayer_peer = peer
+		player_info.peer_id = HOST_PEER_ID
 		players[player_info.peer_id] = player_info
 		player_connected.emit(player_info)
 		return
@@ -40,11 +43,12 @@ func host_game() -> void:
 func join_game(
 	address_ip: String = NetworkManager.SERVER_IP, port: int = NetworkManager.PORT
 ) -> void:
+	## TODO(mackenzie): need a way to handle timeouts
 	if not is_multiplayer_connected():
 		var peer = ENetMultiplayerPeer.new()
 		var error = peer.create_client(address_ip, port)
 		if error:
-			push_error("Unable to create multipler server: %d" % error)
+			push_error("Unable to create multiplayer client: %d" % _error_to_string(error))
 			return
 		multiplayer.multiplayer_peer = peer
 		return
@@ -61,18 +65,25 @@ func _ready() -> void:
 
 func is_multiplayer_connected() -> bool:
 	return (
-		multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED
+		multiplayer.multiplayer_peer
+		&& (
+			multiplayer.multiplayer_peer.get_connection_status()
+			== MultiplayerPeer.CONNECTION_CONNECTED
+		)
 		&& multiplayer.multiplayer_peer is ENetMultiplayerPeer
 	)
 
 
-func disconnect_from_multiplayer():
-	multiplayer.multiplayer_peer.close()
+func disconnect_from_multiplayer() -> void:
+	if is_multiplayer_connected():
+		multiplayer.multiplayer_peer.close()
+		print("Disconnected from multiplayer")
+
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
-	print("Disconnected from multiplayer")
-	for player in players:
-		player_disconnected.emit(player)
+	for peer_id in players.keys():
+		player_disconnected.emit(peer_id)
 	players.clear()
+	return
 
 
 @rpc("any_peer", "reliable")
@@ -92,13 +103,14 @@ func _on_player_connected(id):
 
 
 func _on_player_disconnected(id):
-	players.erase(id)
 	player_disconnected.emit(id)
+	players.erase(id)
 
 
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
 	players[peer_id] = player_info
+	player_info.peer_id = peer_id
 	player_connected.emit(player_info)
 
 
@@ -110,3 +122,15 @@ func _on_server_disconnected():
 	push_warning("Connection to host was lost")
 	disconnect_from_multiplayer()
 	server_disconnected.emit()
+
+
+func _error_to_string(error: int) -> String:
+	match error:
+		OK:
+			return "Success"
+		ERR_ALREADY_IN_USE:
+			return "Peer is already active"
+		ERR_CANT_CREATE:
+			return "Failed to create ENet host"
+		_:
+			return "Unknown error: %d" % error

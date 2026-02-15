@@ -13,7 +13,7 @@ func _ready() -> void:
 	join_game_btn.button_up.connect(join_game)
 	leave_game_btn.button_up.connect(leave_game)
 	player_name.text_changed.connect(_on_text_changed)
-	NetworkManager.server_disconnected.connect(_on_disconnect, CONNECT_ONE_SHOT)
+	NetworkManager.server_disconnected.connect(_on_disconnect)
 
 
 func create_game() -> void:
