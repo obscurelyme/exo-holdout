@@ -1,9 +1,51 @@
 [gd_resource type="TileSet" format=3 uid="uid://clpju2lfbo1ro"]
 
 [ext_resource type="Texture2D" uid="uid://b28d0tclo8skm" path="res://resources/sprites/ground_1_tilemap.png" id="1_peyie"]
+[ext_resource type="Texture2D" uid="uid://bjacm35fw2oxn" path="res://resources/sprites/wall.png" id="1_x7jcc"]
 [ext_resource type="Texture2D" uid="uid://d37sh6g2b4eqk" path="res://resources/sprites/ground_2_tilemap.png" id="2_x7jcc"]
 [ext_resource type="Texture2D" uid="uid://db5fbod0mk1su" path="res://resources/sprites/ground_3_tilemap.png" id="3_3j5wi"]
+[ext_resource type="Texture2D" uid="uid://bhigodg43fsu1" path="res://resources/sprites/corner-wall.png" id="3_e8l5q"]
 [ext_resource type="Texture2D" uid="uid://b5r35svr2h8ai" path="res://resources/sprites/ground_decal.png" id="4_e8l5q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3j5wi"]
+texture = ExtResource("1_x7jcc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_peyie")
@@ -177,6 +219,14 @@ texture_region_size = Vector2i(64, 64)
 10:12/0 = 0
 11:12/0 = 0
 12:12/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yonb"]
+texture = ExtResource("3_e8l5q")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("2_x7jcc")
@@ -863,3 +913,5 @@ sources/2 = SubResource("TileSetAtlasSource_yqjtg")
 sources/4 = SubResource("TileSetAtlasSource_iywne")
 sources/5 = SubResource("TileSetAtlasSource_p57ef")
 sources/6 = SubResource("TileSetAtlasSource_p2fuk")
+sources/0 = SubResource("TileSetAtlasSource_3j5wi")
+sources/3 = SubResource("TileSetAtlasSource_2yonb")

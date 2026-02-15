@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://bqbxl4nu8lyem"]
 
 [ext_resource type="Script" uid="uid://btinty27wt4hw" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://drntt8hvl0c6w" path="res://scenes/projectiles/pulse_beam.tscn" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://d2ic6vr1n7642" path="res://resources/sprites/player.png" id="2_g2els"]
+[ext_resource type="Script" uid="uid://ddlfiuov8bvip" path="res://scripts/projectiles/fire_projectile.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://nks7tqkcn7bn" path="res://scripts/attributes/health.gd" id="5_qlg0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 43.046486
 
 [node name="Player" type="CharacterBody2D" unique_id=1447230057]
+collision_mask = 2
 script = ExtResource("1_3vyb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=655832615]
@@ -16,3 +20,18 @@ texture = ExtResource("2_g2els")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=615200697]
 position = Vector2(-16, 0)
 shape = SubResource("CircleShape2D_g2els")
+
+[node name="FireProjectile" type="Node2D" parent="." unique_id=1525136119]
+position = Vector2(46, 16)
+script = ExtResource("3_qhqgy")
+projectile = ExtResource("2_dqkch")
+
+[node name="Timer" type="Timer" parent="FireProjectile" unique_id=767572939]
+wait_time = 0.25
+
+[node name="Attributes" type="Node" parent="." unique_id=158068852]
+
+[node name="Health" type="Node" parent="Attributes" unique_id=1459772352]
+script = ExtResource("5_qlg0r")
+max_health = 500.0
+metadata/_custom_type_script = "uid://nks7tqkcn7bn"
