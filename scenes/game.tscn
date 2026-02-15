@@ -109,6 +109,7 @@ script = ExtResource("3_lbhrr")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=894583002]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1144716975]
+self_modulate = Color(1, 1, 1, 0.19607843)
 offset_left = 1646.0
 offset_top = 16.0
 offset_right = 1902.0

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://njyxxp14n0u1" path="res://icon.svg" id="1_a6gui"]
 [ext_resource type="Script" uid="uid://chhee4owp263o" path="res://scripts/enemy/grunt.gd" id="1_ave5w"]
+[ext_resource type="Script" uid="uid://nks7tqkcn7bn" path="res://scripts/attributes/health.gd" id="3_0woqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxy5n"]
 size = Vector2(50, 50)
@@ -21,3 +22,9 @@ texture = ExtResource("1_a6gui")
 avoidance_enabled = true
 radius = 15.0
 avoidance_mask = 2
+
+[node name="Attributes" type="Node" parent="." unique_id=1132199447]
+
+[node name="Health" type="Node" parent="Attributes" unique_id=397077538]
+script = ExtResource("3_0woqi")
+max_health = 250.0

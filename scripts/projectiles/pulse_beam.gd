@@ -13,6 +13,13 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	var collision = move_and_collide(velocity)
 	if collision:
+		var collider = collision.get_collider()
+
+		# Check if the collider has a health component
+		var health = collider.get_node_or_null("Attributes/Health")
+		if health:
+			health.hit_points -= damage
+
 		_timer.stop()
 		_clean_up()
 

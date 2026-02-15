@@ -25,10 +25,5 @@ position = Vector2(46, 16)
 script = ExtResource("3_qhqgy")
 projectile = ExtResource("2_dqkch")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="FireProjectile" unique_id=1585474396]
-remote_path = NodePath("../..")
-use_global_coordinates = false
-update_scale = false
-
 [node name="Timer" type="Timer" parent="FireProjectile" unique_id=767572939]
 wait_time = 0.25
