@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 		var new_projectile: PulseBeam = projectile.instantiate()
 		new_projectile.global_rotation = global_rotation
 		new_projectile.global_position = global_position
-		get_tree().root.add_child(new_projectile)
+		get_tree().root.get_node("Game").add_child(new_projectile)
 		_locked = true
 		_timer.start()
 
