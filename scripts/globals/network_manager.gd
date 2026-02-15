@@ -4,6 +4,8 @@ signal player_connected(net_player: NetPlayer)
 signal player_disconnected(net_player: NetPlayer)
 signal server_disconnected
 
+## TODO: requires port forwarding if you want to expose this and play with friends.
+## Will eventually let Steam handle this so port forwarding is not required.
 const SERVER_IP: String = "192.168.1.167"
 const PORT = 5290
 const MAX_CONNS: int = 4
