@@ -6,8 +6,8 @@ extends SubViewport
 
 
 func _ready() -> void:
-	world_2d = get_tree().root.world_2d
+    world_2d = get_tree().root.world_2d
 
 
 func _physics_process(_delta: float) -> void:
-	camera_2d.position = player.position
+    camera_2d.position = player.position

@@ -1,5 +1,4 @@
 {
-    "editor.defaultFormatter": "EddieDover.gdscript-formatter-linter",
     "editor.formatOnSave": true,
     "files.exclude": {
         "**/.git": true,
@@ -9,5 +8,8 @@
     },
     "files.readonlyInclude": {
         "{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
-    }
+	},
+	"[gdscript]": {
+		"editor.defaultFormatter": "EddieDover.gdscript-formatter-linter"
+	}
 }
